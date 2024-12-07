@@ -1,2 +1,29 @@
 1. Finish Trie implementation.
-2. Finish code to use trie to check for JPEG file extensions.
+----Regarding tries, the maximum number of children
+    for each node is bounded by the size of the alphabet you are
+    working with. This is due to how a trie works (a word is broken
+    down into characters and each character becomes a "node".).
+
+    This means we can implement character lookup using a lookup
+    table (if we are using unicode), or, if using ASCII,
+    just represent it as a byte value directly. 
+
+    We can implement the tree using a binary blob where each "node"
+    holds its value, the number of children it has, and the index
+    pointing two the first child. Say we have
+    a root node with two children who then have two children of their
+    own.  Our root node sits at RAM address 0. It has two children.
+    Immediately after to root node are its two kids.  Their children,
+    however, do not appear until after them, and are unordered.
+
+    Key takeaway: Each level of the tree is presented one at a time,
+    and each before the next.  Root -> level 1 -> level 2, ...
+    -> level n.
+
+    This structure works well for pre-packaged tries.
+    How do we make it work for tries of indeterminate size?
+    Easy. Once we know the size of the alphabet we are working
+    with, the maximum trie can be calculated mathematically.
+    If it's not too big, we can allocate all memory at once.
+    Else, we can allocate just enough and then reallocate
+    memory once we see we need more.
