@@ -1,13 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(jpeg-endianness-tests  CXX)
+project(useful-data-structures  CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
 add_compile_options(-std=c++2b -Wall -Wextra -Wpedantic -Werror)
 
-
-find_package(OpenCV REQUIRED)
-message(STATUS ${OpenCV_INCLUDE_DIRS})
 set(PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 add_executable(test_runner ${PROJECT_SOURCE_DIR}/main.cpp)
 
